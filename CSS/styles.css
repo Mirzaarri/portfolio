@@ -1,0 +1,111 @@
+/* Reset some default styles */
+body, ul, li, p, h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Iceland';
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  z-index: 3;
+}
+
+.logo a {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.9s ease;
+}
+.logo a:hover{
+  
+  color: rgb(0, 230, 134);
+}
+
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  transition: color 0.8s ease;
+  cursor: pointer;
+}
+
+/* Hover styles defined after default styles */
+.nav-links a:hover {
+  color: rgb(0, 230, 134);
+}
+
+/* Hero Section styles */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-background {
+  background-image: url('../images/bg6.jpg');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Pseudo-element for dimming effect */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 1; /* Place the dimming layer below the content */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ensure the content is above the dimming layer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.hero-text {
+  text-align: center;
+  font-size: 80px;
+  font-weight: bold;
+  color: rgb(0, 230, 134);
+}
+
+/* Text animation styles will be added in the next response */
+#active{
+  color: rgb(0, 230, 134);
+  font-size: 23px;
+}
