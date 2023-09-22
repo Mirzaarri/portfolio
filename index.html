@@ -11,6 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Iceland&display=swap"
       rel="stylesheet"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Arri's Portfolio</title>
   </head>
   <body>
@@ -87,7 +89,7 @@
     </header>
 
     <!-- about section -->
-    <section class="about">
+    <section class="about hidden">
       <div class="dp">
         <img src="./images/IQB_9106.png" alt="" />
       </div>
@@ -143,5 +145,42 @@
         </div>
       </div>
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hiddenElements = document.querySelectorAll(".hidden");
+
+        const revealOnScroll = () => {
+          hiddenElements.forEach((el) => {
+            const boundingBox = el.getBoundingClientRect();
+            if (boundingBox.top < window.innerHeight - 100) {
+              el.classList.add("show");
+            }
+          });
+        };
+
+        // Initial call to reveal elements in view on page load
+        revealOnScroll();
+
+        // Attach the scroll event listener
+        window.addEventListener("scroll", revealOnScroll);
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const heroImage = document.querySelector(".hero-background");
+
+        // Listen for the scroll event
+        window.addEventListener("scroll", () => {
+          // Calculate the amount to scale the image based on scroll position
+          const scrollY = window.scrollY;
+          const scale = 1 + (scrollY / window.innerHeight) * 0.5; // Adjust the factor to control the scaling effect
+
+          // Apply the scaling transformation to the image
+          heroImage.style.transform = `scale(${scale})`;
+        });
+      });
+    </script>
   </body>
 </html>
