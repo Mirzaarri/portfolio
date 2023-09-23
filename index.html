@@ -11,34 +11,43 @@
       href="https://fonts.googleapis.com/css2?family=Iceland&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Arri's Portfolio</title>
+    <script src="./scripts/anim.js"></script>
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo">
-        <a href="#">ARSALAN MIRZA</a>
-      </div>
-      <ul class="nav-links">
-        <li><a id="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <section id="home">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#">ARSALAN MIRZA</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </section>
 
     <!-- Hero Section -->
     <header class="hero">
       <div class="hero-background"></div>
-      <div class="waviy">
+      <div class="waviy hidden">
         <span style="--i: 1">H</span>
         <span style="--i: 2">I</span>
       </div>
       <br />
-      <div class="waviy1">
+      <div class="waviy1 hidden">
         <span style="--i: 1">I'</span>
         <span style="--i: 2">M</span>
         <span style="--i: 3"> </span>
@@ -51,7 +60,7 @@
         <span style="--i: 10">N</span>
       </div>
       <br />
-      <div class="waviy2">
+      <div class="waviy2 hidden">
         <span style="--i: 1">I'</span>
         <span style="--i: 2">M</span>
         <span style="--i: 3"> </span>
@@ -87,9 +96,10 @@
         <span style="--i: 25">R</span>
       </div>
     </header>
-
+    <br />
+    <section id="about"></section>
     <!-- about section -->
-    <section class="about hidden">
+    <section class="about">
       <div class="dp">
         <img src="./images/IQB_9106.png" alt="" />
       </div>
@@ -145,42 +155,197 @@
         </div>
       </div>
     </section>
+    <section class="services" id="services">
+      <div class="services-container">
+        <div class="text-with-lines">
+          <div class="line left-line"></div>
+          <div class="text">My Services</div>
+          <div class="line right-line"></div>
+        </div>
+        <div class="services-row1">
+          <div class="rowOneitem">
+            <img
+              class="services-image"
+              src="./images/icons/notebook-computer.png"
+              alt="Development"
+            />
+            <h2>Development</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+          <div class="rowOneitem">
+            <img
+              class="services-image"
+              src="./images/icons/graphic-design.png"
+              alt="Development"
+            />
+            <h2>Web Design</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+          <div class="rowOneitem">
+            <img
+              class="services-image"
+              src="./images/icons/branding.png"
+              alt="Development"
+            />
+            <h2>Branding</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+        </div>
+        <!-- row 1 elements end here-->
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const hiddenElements = document.querySelectorAll(".hidden");
+        <!-- row 2 elements start here-->
+        <div class="services-row2">
+          <div class="rowTwoitem">
+            <img
+              class="services-image"
+              src="./images/icons/install.png"
+              alt="Development"
+            />
+            <h2>Easy Installation</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+          <div class="rowTwoitem">
+            <img
+              class="services-image"
+              src="./images/icons/responsive.png"
+              alt="Development"
+            />
+            <h2>Fully Responsive</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+          <div class="rowTwoitem">
+            <img
+              class="services-image"
+              src="./images/icons/trust.png"
+              alt="Development"
+            />
+            <h2>Trust Support</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and type setting
+              industry.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Ends here-->
 
-        const revealOnScroll = () => {
-          hiddenElements.forEach((el) => {
-            const boundingBox = el.getBoundingClientRect();
-            if (boundingBox.top < window.innerHeight - 100) {
-              el.classList.add("show");
-            }
-          });
-        };
+    <!--Gallary/portfolio stars here-->
+    <section class="gallary" id="portfolio">
+      <div class="container-gallary">
+        <div class="text-with-lines">
+          <div class="line left-line"></div>
+          <div class="text">Portfolio</div>
+          <div class="line right-line"></div>
+        </div>
+        <div class="wrapper">
+          <div class="media hidden">
+            <div class="layer">
+              <p>+ Paul Gilmore</p>
+            </div>
+            <img src="./images/port8.jpg" alt="" />
+          </div>
+          <div class="media hidden">
+            <div class="layer">
+              <p>+ M. O' Neil</p>
+            </div>
+            <img src="./images/port2.jpg" alt="" />
+          </div>
+          <div class="media hidden">
+            <div class="layer">
+              <p>+ N. Mehta</p>
+            </div>
+            <img src="./images/port3.jpg" alt="" />
+          </div>
+          <div class="media hidden1">
+            <div class="layer">
+              <p>+ Paul Gilmore</p>
+            </div>
+            <img src="./images/port4.jpg" alt="" />
+          </div>
+          <div class="media hidden1">
+            <div class="layer">
+              <p>+ M. O' Neil</p>
+            </div>
+            <img src="./images/port5.jpg" alt="" />
+          </div>
+          <div class="media hidden1">
+            <div class="layer">
+              <p>+ N. Mehta</p>
+            </div>
+            <img src="./images/port6.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div class="text-with-lines">
+        <div class="line left-line"></div>
+        <div class="text">Contact Us</div>
+        <div class="line right-line"></div>
+      </div>
+      <div class="contact-container">
+        <div class="contactRow1 hidden">
+          <input type="text" name="name" placeholder="Name *" id="name" />
+          <input type="email" name="email" placeholder="Email *" id="email" />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject *"
+            id="subject"
+          />
+        </div>
+        <div class="contactRow2 hidden">
+          <textarea
+            name="message"
+            id="message"
+            cols="150"
+            rows="10"
+            placeholder="Your Message *"
+          ></textarea>
+        </div>
+        <div class="contactRow3 hidden">
+          <div>
+            <span style="font-weight: bold">Email:</span>
+            arslantahir0553@gmail.com
+          </div>
+          <div><span style="font-weight: bold">Phone:</span> +923341530553</div>
+          <div class="btn-class">
+            <input class="btn" type="button" value="SEND MESSAGE" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Initial call to reveal elements in view on page load
-        revealOnScroll();
-
-        // Attach the scroll event listener
-        window.addEventListener("scroll", revealOnScroll);
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const heroImage = document.querySelector(".hero-background");
-
-        // Listen for the scroll event
-        window.addEventListener("scroll", () => {
-          // Calculate the amount to scale the image based on scroll position
-          const scrollY = window.scrollY;
-          const scale = 1 + (scrollY / window.innerHeight) * 0.5; // Adjust the factor to control the scaling effect
-
-          // Apply the scaling transformation to the image
-          heroImage.style.transform = `scale(${scale})`;
-        });
-      });
-    </script>
+    <footer class="footer">
+      <!-- Row 1: Logo -->
+      <div class="footer-row">
+        <h1>ARSALAN MIRZA</h1>
+      </div>
+      <!-- Row 2: Social Media Icons -->
+      <div class="footer-row">
+        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+      <!-- Row 3: Copyright Text -->
+      <div class="footer-row">&copy; 2023 Portfolio. All Rights Reserved.</div>
+    </footer>
   </body>
 </html>
