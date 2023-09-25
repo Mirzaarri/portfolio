@@ -74,24 +74,58 @@ body::-webkit-scrollbar {
   color: #000000; /* New link color */
 }
 
-
-/* Hover styles defined after default styles */
-.nav-links a:hover {
-  background: linear-gradient(
-            to right, #000000, #c40000,
-             #7c0000, #000000);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        font-size: 28px;
+/* Apply the hover effect to .navlink a */
+a {
+  color: #000; /* Set the initial text color */
+  font-weight: normal; /* Set the initial font weight */
+  text-transform: none; /* Reset text transformation */
+  position: relative; /* Required for pseudo-element positioning */
+  transition: color 0.6s ease, font-weight 0.3s ease, transform 0.3s ease; /* Explicit transition properties */
 }
 
-.active{
-  background: linear-gradient(
-            to right, #000000, #c40000,
-             #7c0000, #000000);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
+a:hover {
+   /* Change to your desired text color on hover */
+  font-weight: bold; /* Add bold font style on hover */
+  /* Uppercase the text for emphasis on hover */
 }
+
+a::before {
+  content: ''; /* Create a pseudo-element for the animation */
+  position: absolute; /* Position the pseudo-element relative to the link */
+  bottom: 0; /* Position it at the bottom of the link */
+  left: 0; /* Position it at the left side of the link */
+  width: 100%; /* Make it cover the entire width of the link */
+  height: 3px; /* Set the height of the animated bar */
+  background-color: #111111b2; /* Change to your desired highlight color */
+  transform-origin: center; /* Set the transform origin to the center */
+  transform: scaleX(0); /* Initially, scale it to 0 width */
+  transition: transform 0.6s ease; /* Add a smooth transition effect for scaleX */
+}
+
+a:hover::before {
+  transform: scaleX(1); /* Scale the pseudo-element to full width on hover */
+}
+
+/* Apply the effect to the .active class */
+.active {
+  color: #ff5722; 
+  font-weight: bold; 
+  position: relative; 
+}
+
+.active::before {
+  content: ''; 
+  position: absolute; 
+  bottom: 0; 
+  left: 1px; 
+  width: 98%; 
+  height: 3px;
+  background-color: #11111194; 
+  transform-origin: center;
+  transform: scaleX(1); 
+  transition: transform 0.3s ease; 
+}
+
 
 /* Hero Section styles */
 .hero {
@@ -142,25 +176,12 @@ body::-webkit-scrollbar {
   
 }
 
-/* .hero-text {
-  text-align: center;
-  font-size: 80px;
-  font-weight: bold;
-  background: linear-gradient(
-            to right, #00a13e, #00d652,
-             #00da91, #00ffc8);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-} */
 
 /* Text animation styles will be added in the next response */
 #active{
   color: black;
   font-size: 23px;
 }
-
-
-
 
 /* testing */
 
@@ -431,6 +452,11 @@ flex-direction: column;
  .services{
   background-color: #ececec;
   clip-path: polygon(20% 10%, 100% 0, 100% 90%, 76% 100%, 0 89%, 0 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  
  }
 
  .services-container{
@@ -454,13 +480,14 @@ flex-direction: column;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
+  flex-wrap: wrap;
  }
 
  .services-row2{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-
+  flex-wrap: wrap;
   width: 100%;
  }
 
@@ -536,20 +563,22 @@ flex-direction: column;
 
 /* gallary CSS starts here */
 .gallary{
-  margin-top: -85px;
+  margin-top: -110px;
+  height: 150vh;
+  clip-path: polygon(75% 12%, 100% 0, 100% 88%, 18% 100%, 0 86%, 0 0);
+  background: #f5f5f5;
 }
 .container-gallary{
-  height: 120vh;
+  height: 130vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f5f5f5;
   
   
 }
 .wrapper {
-  margin-top: 100px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -611,12 +640,15 @@ p {
 
 /* Contact CSS Starts Here */
 
+.contact{
+  margin-top: -60px;
+}
 .contact-container{
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 60px;
   row-gap: 20px;
   height: 70vh;
 }
@@ -691,10 +723,61 @@ textarea::placeholder {
   color: rgba(255, 255, 255, 0.989);
   border-radius: 4px;
   border: none;
-  
-  
+  transition: all 0.7s ease;
+  cursor: pointer;
+}
+.btn:hover{
+  background-color:rgba(255, 255, 255, 0.989);
+  color: black;
+  border: 1px solid black;
+
 }
 
+@media screen and (max-width: 1200px) {
+  
+  .contactRow1{
+    flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: center;
+  }
+  .contactRow2{
+    margin: 0 50px;
+  }
+  .contactRow2 textarea {
+    width: 100%; /* Make textarea take up full width on smaller screens */
+    height: auto;
+    /* Allow the textarea to expand vertically as needed */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    height: auto; /* Allow the form to expand as needed on smaller screens */
+    padding-bottom: 50px;
+  }
+  .contactRow1{
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .contactRow2{
+    margin: 0 70px;
+  }
+  .contactRow2 textarea {
+    width: 100%; /* Make textarea take up full width on smaller screens */
+    height: auto;
+    /* Allow the textarea to expand vertically as needed */
+  }
+  .contactRow3 {
+    flex-direction: column;
+    margin-left: 50px; /* Stack content vertically on smaller screens */
+  }
+
+  .btn-class {
+    justify-content: flex-start; /* Align button to the top on smaller screens */
+    margin-top: 10px; /* Reduce space between button and form content */
+  }
+}
 /* Footer Starts here */
 
 /* styles.css */
@@ -718,10 +801,149 @@ textarea::placeholder {
 
 /* Hover effect for social media icons (optional) */
 .footer a:hover {
-  color: #fafafa; /* Change color on hover */
+  color: #fafafa !important;
+  /* Change color on hover */
 }
 
 /* Style the copyright text */
 .footer-row:last-child {
   font-size: 18px; /* Adjust font size as needed */
+}
+
+
+
+
+/* Media Queries */
+
+
+@media screen and (max-width: 576px) {
+  /* Navbar adjustments for smaller screens */
+  .navbar {
+    padding: 15px;flex-wrap: wrap;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+    margin-right: 10px; 
+   
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Styles for smaller screens (e.g., mobile devices) */
+  .hero {
+    padding: 50px 0; /* Adjust padding as needed */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /* Adjust the clip-path for the shape */ /* Adjust the font size for smaller screens */
+  }
+  span{
+    font-size: 22px;
+  }
+  .hero::before {
+    
+    clip-path: polygon(0 40%, 100% 40%, 100% 80%, 0 80%); /* Adjust the opacity as needed */
+
+  } 
+}
+@media screen and (max-width: 800px) {
+  /* Styles for smaller screens (e.g., mobile devices) */
+  .hero {
+    padding: 50px 0; /* Adjust padding as needed */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /* Adjust the clip-path for the shape */
+    font-size: 16px; /* Adjust the font size for smaller screens */
+  }
+  span{
+    font-size: 24px;
+  }
+  .hero::before {
+    
+    clip-path: polygon(0 40%, 100% 40%, 100% 80%, 0 80%); /* Adjust the opacity as needed */
+
+  } 
+}
+
+
+
+
+@media screen and (max-width: 576px) {
+  /* Footer adjustments for smaller screens */
+  .footer-row {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .item-left {
+    margin-left: 0; /* Remove the left margin */
+    text-align: center; /* Center align text */
+  }
+
+  /* Adjust other styles within .about as needed for tablet screens */
+}
+
+/* Media query for screens with a maximum width of 768px (typical for tablets) */
+@media screen and (max-width: 768px) {
+  .services {
+    /* Adjust styles for tablet screens */
+    justify-content: center; /* Center-align services */
+    clip-path: none;
+  }
+}
+
+/* Media query for screens with a maximum width of 576px (typical for mobile devices) */
+@media screen and (max-width: 576px) {
+  .services {
+    /* Further adjustments for smaller screens */
+    justify-content: center; /* Center-align services */
+    clip-path: none;
+  }
+}
+
+
+@media screen and (max-width: 1109px) {
+  .gallary {
+    clip-path: none;
+    height: 190vh;
+  }
+
+  .container-gallary {
+    width: 100%;
+    margin: 10px;
+    clip-path: none;
+    height: 180vh;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .gallary {
+    clip-path: none;
+    height: 320vh;
+  }
+
+  .container-gallary {
+    width: 100%;
+    margin: 10px;
+    clip-path: none;
+    height: 310vh;
+  }
+}
+
+/* @media screen and (max-width: 576px) {
+  .gallary {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); 
+  }
+
+  .gallary-item {
+    width: 100%;
+    margin: 10px 0; 
+    clip-path: none;
+  } */
 }

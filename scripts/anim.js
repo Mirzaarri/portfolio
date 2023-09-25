@@ -208,7 +208,38 @@
     
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('section');
   
+      // Function to check if a section is in the viewport
+      function isSectionInViewport(section) {
+          const rect = section.getBoundingClientRect();
+          return (
+              rect.top <= 50 && rect.bottom >= 50
+          );
+      }
+  
+      // Function to update the active navigation link
+      function updateActiveNavLink() {
+          let activeIndex = -1; // Index of the currently active section
+  
+          sections.forEach((section, index) => {
+              if (isSectionInViewport(section)) {
+                  activeIndex = index;
+              }
+          });
+  
+          if (activeIndex !== -1) {
+              // Remove the "active" class from all navigation links
+              navLinks.forEach(navLink => {
+                  navLink.classList.remove('active');
+              });
+  
+              // Add the "active" class to the corresponding navigation link
+              navLinks[activeIndex].classList.add('active');
+          }
+      }
+  
+      // Add click event listeners to navigation links
       navLinks.forEach(link => {
           link.addEventListener('click', (event) => {
               event.preventDefault();
@@ -245,8 +276,24 @@
               }
           });
       });
+  
+      // Add scroll event listener to update active navigation link as you scroll
+      window.addEventListener('scroll', () => {
+          updateActiveNavLink();
+  
+          // Add a check for when you scroll back to the top
+          if (window.scrollY === 0) {
+              // Remove the "active" class from all navigation links
+              navLinks.forEach(navLink => {
+                  navLink.classList.remove('active');
+              });
+  
+              // Add the "active" class to the "Home" link
+              navLinks[0].classList.add('active');
+          }
+      });
+  
+      // Initial check when the page loads
+      window.addEventListener('load', updateActiveNavLink);
   });
   
-    
-
-    
